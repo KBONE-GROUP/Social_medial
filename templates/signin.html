@@ -88,10 +88,14 @@
 						<a href="#" class="login100-social-item bg2">
 							<i class="fa fa-twitter"></i>
 						</a>
-
-						<a href="#" class="login100-social-item bg3">
-							<i class="fa fa-google"></i>
-						</a>
+						{% load socialaccount %}
+						{% if user.is_authenticated %}
+							<p>Welcome, You are logged in as {{ user.username }}</p>
+						{% else %}
+							<a href="{% provider_login_url 'google' %}dashboard/" class="login100-social-item bg3">
+								<i class="fa fa-google"></i>
+							</a>
+						{% endif %}
 					</div>
 
 					<div class="flex-col-c p-t-50">
